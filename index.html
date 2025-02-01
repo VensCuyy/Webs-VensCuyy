@@ -94,22 +94,20 @@
         }
         
     /* Tombol musik */
-    #music-controls {
+    .music-controls {
       margin-top: 20px;
       display: flex;
       gap: 10px;
       justify-content: center;
     }
-    #play-button, #stop-button {
+    
+    .music-controls button {
       padding: 10px 20px;
       background-color: #1E90FF;  /* Biru Muda */
       color: white;
       border: none;
       border-radius: 20px;
       cursor: pointer;
-    }
-    #play-button:hover, #stop-button:hover {
-      background-color: #187bcd;
     }
     
 menu {
@@ -228,9 +226,10 @@ menu.open > .trigger > i {
         </div>
         
     <!-- Kontrol Musik -->
-  <div id="music-controls">
-    <button id="play-button">ᴘʟᴀʏ ᴍᴜsɪᴄ</button>
-    <button id="stop-button">sᴛᴏᴘ ᴍᴜsɪᴄ</button>
+  <div class="music-controls">
+    <audio id="audio" src="music.mp3"></audio>
+    <button id="tombol-mulai">ᴘʟᴀʏ ᴍᴜsɪᴄ</button>
+    <button id="tombol-stop">sᴛᴏᴘ ᴍᴜsɪᴄ</button>
   </div>
   
     <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
@@ -335,18 +334,15 @@ trigger.addEventListener('click', (e) => {
   e.currentTarget.parentElement.classList.toggle("open");
 });
 
-    const playButton = document.getElementById('play-button');
-    const stopButton = document.getElementById('stop-button');
+const audio = document.getElementById("audio");
+const tombolMulai = document.getElementById("tombol-mulai");
+const tombolStop = document.getElementById("tombol-stop");
 
-    let music = new Audio('https://d.top4top.io/m_33172gv830.mp3'); // Musik yang akan dimainkan
-    
-        // Kontrol tombol musik
-    playButton.addEventListener('click', () => {
-      music.play();
-    });
-
-    stopButton.addEventListener('click', () => {
-      music.pause();
+tombolMulai.addEventListener("click", function() {
+  audio.play();
+});
+tombolStop.addEventListener("click", function() {
+  audio.pause();
 });
 
     document.querySelector('.payment').addEventListener('click', () => {
