@@ -125,14 +125,14 @@ background-position: 0% 50%;
     <hr/>
  <img class="img-fluid" style="max-height: 30px" src="https://telegra.ph/file/c40e722ccd7e737c54d03.jpg"> 
 </p>
-<point style = "font-weight: bold;"> Gopay : 085117116944
-Atas Nama : anak </br>
+<point style = "font-weight: bold;"> Gopay : 085117116944 <button id="tombol-salin" onclick="salinTeks()">SALIN NOPE</button>
+<p> Atas Nama : anak </p> </br>
 </p>
     <hr/>
 <img class="img-fluid" style="max-height: 30px" src="https://statis-images.s3.ap-southeast-1.amazonaws.com/global/payment/V2/IDR/epayment/dana.webp">
 </p>
-<point style = "font-weight: bold;"> Dana : 085117116944
-Atas Nama : anak</br>
+<point style = "font-weight: bold;"> Dana : 085117116944 <button id="tombol-salin" onclick="salinTeks()">SALIN NOPE</button>
+<p>Atas Nama : anak</p></br>
 </p>
     <hr/>
     <img class="img-fluid" style="max-height: 30px" src="https://telegra.ph/file/36bfcc1a9052b3a50126c.jpg">
@@ -156,6 +156,10 @@ Atas Nama : anak</br>
               function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
         }
+        
+        function salinTeks() {
+          navigator.clipboard.writeText("085117116944");
+        }
     </script>
 </body>
-</html>
+ </html>
