@@ -1,139 +1,104 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VensCuyy - Ai</title>
-  <link rel="icon" href="https://files.catbox.moe/gj7t5y.png">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      min-height: 100vh;
-      background-image: url('https://files.catbox.moe/rhhmuq.png');
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      flex-direction: column;
-      position: relative;
-    }
-    .chat-container {
-      width: 100%;
-      max-width: 900px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      backdrop-filter: blur(10px);
-    }
-    .chat-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 15px;
-    }
-    .bot-avatar {
-      width: 60px;
-      height: 60px;
-      margin-right: 15px;
-    }
-    .bot-avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-    }
-    .chat-header h1 {
-      color: white;
-      font-size: 1.5rem;
-    }
-    .chat-messages {
-      height: 400px;
-      overflow-y: auto;
-      padding: 15px;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      margin-bottom: 15px;
-    }
-    .message {
-      margin-bottom: 15px;
-      display: flex;
-    }
-    .user-message {
-      justify-content: flex-end;
-    }
-    .bot-message {
-      justify-content: flex-start;
-    }
-    .message-content {
-      padding: 12px 18px;
-      border-radius: 18px;
-      max-width: 75%;
-      font-size: 1rem;
-    }
-    .user-message .message-content {
-      background: #1E90FF;  /* Ubah hijau menjadi biru muda */
-      color: white;
-    }
-    .bot-message .message-content {
-      background: #444;
-      color: white;
-    }
-    .input-container {
-      display: flex;
-      gap: 10px;
-    }
-    #message-input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 20px;
-      background: #444;
-      color: white;
-    }
-    #send-button {
-      background: #1E90FF;  /* Ubah hijau menjadi biru muda */
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-    .typing-indicator {
-      display: none;
-      color: #aaa;
-      font-style: italic;
-      margin-bottom: 10px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bajisan Payment</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Animasi copyright */
-    .copyright {
-      position: absolute;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 2rem; /* Perbesar ukuran font copyright */
-      color: white;
-      animation: text-scroll 10s linear infinite;
-    }
+        /* Header */
+        .header {
+            background-color: #4c22a0;
+            padding: 20px;
+            text-align: center;
+        }
+        .header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+        .header h1 {
+            display: inline;
+            margin-left: 10px;
+            font-size: 24px;
+        }
 
-    @keyframes text-scroll {
-      0% { opacity: 0; transform: translateX(-100%); }
-      25% { opacity: 1; transform: translateX(0); }
-      50% { opacity: 1; transform: translateX(100%); }
-      75% { opacity: 0; transform: translateX(0); }
-      100% { opacity: 0; transform: translateX(-100%); }
-    }
+        /* Produk Grid */
+        .card {
+            background-color: #262626;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+        
+        .card video {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
 
+        .card button {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            justify-content: center;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .menu {
+            background-color: #262626;
+            border-radius: 0px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: none;
+            padding: 10px;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        .menu button {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            justify-content: center;
+        }
+        
     /* Tombol musik */
     #music-controls {
       margin-top: 20px;
       display: flex;
       gap: 10px;
+      justify-content: center;
     }
     #play-button, #stop-button {
       padding: 10px 20px;
@@ -146,90 +111,248 @@
     #play-button:hover, #stop-button:hover {
       background-color: #187bcd;
     }
-  </style>
+    
+menu {
+  --size: 2.5rem;
+  --radius: 6rem;
+  --padding: 1rem;
+  --bg-color: rgba(255, 255, 255, 0.9);
+  --fg-color: rgba(0, 0, 0, 0.7);
+  --hi-color: #c22eff;
+  
+  position: fixed;
+  bottom: var(--padding);
+  right: var(--padding);
+}
+
+menu > * {
+  position: absolute;
+  
+  display: grid;
+  place-content: center;
+  
+  border-radius: 50%;
+  
+  background: var(--bg-color);
+  color: var(--fg-color);
+  
+  text-decoration: none;
+  
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.6);
+}
+
+menu > .action {
+  --factor: 0;
+  
+  width: var(--size);
+  height: var(--size);
+  right: calc(0.35 * var(--size));
+  bottom: calc(0.35 * var(--size));
+  
+  opacity: 0;
+  
+  transform: rotate(calc(-1 * var(--angle))) translateY(calc(-1 * var(--radius) * var(--factor))) rotate(var(--angle));
+  
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out, box-shadow 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+menu > .action:hover, menu > .trigger:hover {
+  color: var(--hi-color);
+  box-shadow: 0px 0px 0px 0.35rem rgba(0, 0, 0, 0.2);
+}
+
+menu.open > .action {
+  --factor: 1;
+  
+  opacity: 1;
+}
+
+menu > .action:nth-child(1) {
+  --angle: 0deg;
+  transition-delay: 0ms
+  --factor: 1;
+  
+  opacity: 1;
+}
+
+menu > .action:nth-child(1) {
+  --angle: 0deg;
+  transition-delay: 0ms;
+}
+
+menu > .action:nth-child(2) {
+  --angle: 30deg;
+  transition-delay: 50ms;
+}
+
+menu > .action:nth-child(3) {
+  --angle: 60deg;
+  transition-delay: 100ms;
+}
+
+menu > .action:nth-child(4) {
+  --angle: 90deg;
+  transition-delay: 150ms;
+}
+
+menu > .trigger {
+  width: calc(1.6 * var(--size));
+  height: calc(1.6 * var(--size));
+  bottom: 0;
+  right: 0;
+  
+  font-size: 2rem;
+  transition: box-shadow 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+menu > .trigger > i {
+  transition: transform 250ms ease-in-out;
+}
+
+menu.open > .trigger > i {
+  transform: rotate(-135deg);
+}
+</style>
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <div class="bot-avatar">
-        <img src="https://files.catbox.moe/gj7t5y.png" alt="AI Avatar">
-      </div>
-      <h1>Cuyy - Ai</h1>
-    </div>
-    <div id="typing-indicator" class="typing-indicator">Cuyy Bot sedang mengetik...</div>
-    <div class="chat-messages" id="chat-messages"></div>
-    <div class="input-container">
-      <input id="message-input" type="text" placeholder="Ketik pertanyaan..." autocomplete="off">
-      <button id="send-button">Kirim</button>
-    </div>
-  </div>
-  
-  <!-- Copyright dengan animasi -->
-  <div class="copyright">&copy; VensCuyy | Cuyy Bot</div>
 
-  <!-- Kontrol Musik -->
+    <!-- Header -->
+    <div class="header">
+        <h1>Bajisan all trx</h1>
+    </div>
+
+    <!-- Produk Grid -->
+      <div class="card">
+         <video autoplay loop muted src="menu.mp4">
+         </video>
+        </div>
+        
+    <!-- Kontrol Musik -->
   <div id="music-controls">
     <button id="play-button">ᴘʟᴀʏ ᴍᴜsɪᴄ</button>
-    <button id="stop-button">sᴀʀᴀɴ ᴀᴛᴀᴜ ʀᴀᴛɪɴɢ</button>
+    <button id="stop-button">sᴛᴏᴘ ᴍᴜsɪᴄ</button>
   </div>
+  
+    <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+    
+ <div class="menu">
+   <h3>MAU LIAT PAYMENT BAJISAN?</h3>
+   <p>PENCET TOMBOL DI BAWAH INI</p>
+   <button type="submit" class="payment">All Payment Bajisan</button>
+ </div>
+   
+    <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+              
+       <!-- AREA CARD SCRIPT -->
+    <div style="margin-bottom: 30px;">
+    <div class="menu">
+      <h3>LIST MC BAJISAN</h3>
+        <ul style="list-style: none; padding: 0; color: white;">
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">1-50k = 2k</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">50-250k = 3k</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">250-500k = 4k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">500-650k = 5k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">650-750k = 6k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">750-850k = 8k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">850-1jt = 10k</a></li>
+        </ul>
+    </div>
+    <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+    
+        <div style="margin-bottom: 30px;">
+    <div class="menu">
+      <h3>MURID BUG</h3>
+      <p>PRICE = 7K</p>
+      <h3>ORDER BOT MD</h3>
+      <p>PRICE = 10K</p>
+      <h4>ALL PERMANEN</h4>
+      </div>
+      </div>
+    
+        <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+        
+<menu>
+  <a href="https://wa.me/6285179944903" class="action"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://tiktok.com/@bajisankegelapan" class="action"><i class="fab fa-tiktok"></i></a>
+  <a href="https://t.me/bajisankegelapan" class="action"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Bajisan_gaming_channel" class="action"><i class="fab fa-youtube"></i></a>
+    <a href="#" class="trigger"><i class="fas fa-plus"></i></a>
+</menu>
 
-  <script>
-    const messageInput = document.getElementById('message-input');
-    const sendButton = document.getElementById('send-button');
-    const chatMessages = document.getElementById('chat-messages');
-    const typingIndicator = document.getElementById('typing-indicator');
+    <footer style="background-color: #111827; color: #fff; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <!-- Nama dan Deskripsi -->
+    <div style="margin-bottom: 30px;">
+        <h2 style="color: #34D399; font-size: 24px; font-weight: bold;">Bajisan all trx</h2>
+        <ul style="list-style: none; padding: 0; color: white;">
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">Akun bisa diubah,</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">Stok bisa di cari,</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">tapi yang amanah,</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Tidak datang dua kali</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Menyala Wii🔥</a></li>
+        </ul>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Quick Links</h3>
+        <ul style="list-style: none; padding: 0; color: white;">
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">About Us</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">FAQs</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Contact Us</h3>
+        <p style="color: white; margin: 5px 0;">Telegram: t.me/bajisankegelapan</p>
+        <p style="color: white; margin: 5px 0;">WhatsApp: +62 851-7994-4903</p>
+    </div>
+
+    <!-- Follow Us -->
+    <div>
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Follow Us</h3>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <a href="https://www.youtube.com/@Bajisan_gaming_channel" style="color: white; font-size: 24px;">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://tiktok.com/@bajisankegelapan" style="color: white; font-size: 24px;">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://t.me/bajisankegelapan" style="color: white; font-size: 24px;">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://wa.me/6285179944903" style="color: white; font-size: 24px;">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+    <script>
+      const trigger = document.querySelector("menu > .trigger");
+trigger.addEventListener('click', (e) => {
+  e.currentTarget.parentElement.classList.toggle("open");
+});
+
     const playButton = document.getElementById('play-button');
     const stopButton = document.getElementById('stop-button');
 
     let music = new Audio('https://d.top4top.io/m_33172gv830.mp3'); // Musik yang akan dimainkan
-
-    async function sendMessage() {
-      const message = messageInput.value.trim();
-      if (!message) return;
-      addMessage(message, 'user');
-      messageInput.value = '';
-      typingIndicator.style.display = 'block';
-      try {
-        const response = await fetch(`https://darkness.ashlynn.workers.dev/chat/?prompt=${encodeURIComponent(message)}&model=gpt-4o-mini`);
-        const data = await response.json();
-        typingIndicator.style.display = 'none';
-        if (data.successful === 'success' && data.response) {
-          addMessage(data.response, 'bot');
-        } else {
-          addMessage('Maaf, terjadi kesalahan. Coba lagi.', 'bot');
-        }
-      } catch (error) {
-        typingIndicator.style.display = 'none';
-        addMessage('Maaf, terjadi kesalahan. Coba lagi.', 'bot');
-      }
-    }
-
-    function addMessage(text, sender) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('message', `${sender}-message`);
-      const messageContent = document.createElement('div');
-      messageContent.classList.add('message-content');
-      messageContent.textContent = text;
-      messageDiv.appendChild(messageContent);
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Kontrol tombol musik
+    
+        // Kontrol tombol musik
     playButton.addEventListener('click', () => {
       music.play();
     });
 
     stopButton.addEventListener('click', () => {
-  window.open('https://wa.me/6282245388943?text=Halo%Min%20Cuyy,%20Saya%20ingin%20memberikan%20rating%20atau%20saran.', '_blank');
+      music.pause();
 });
 
-    sendButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
-    });
-
-    addMessage('Halo! Saya Cuyy Bot. Ada yang bisa saya bantu?', 'bot');
-  </script>
+    document.querySelector('.payment').addEventListener('click', () => {
+      window.location.replace('payment.html');
+    })
+    </script>
+    </div>
 </body>
 </html>
