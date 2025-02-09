@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bajisan Payment</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        .header {
+            background-color: #4c22a0;
+            padding: 20px;
+            text-align: center;
+        }
+        .header img {
+            width: 50px;
+            vertical-align: middle;
+        }
+        .header h1 {
+            display: inline;
+            margin-left: 10px;
+            font-size: 24px;
+        }
+
+        /* Produk Grid */
+        .card {
+            background-color: #262626;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+        
+        .card video {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .card button {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            justify-content: center;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .menu {
+            background-color: #262626;
+            border-radius: 0px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: none;
+            padding: 10px;
+            width: 200px;
+            height: 210px;
+            margin: 0 auto;
+        }
+        
+        .menu button {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            justify-content: center;
+        }
+        
+    /* Tombol musik */
+    .music-controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    
+    .music-controls button {
+      padding: 10px 20px;
+      background-color: #1E90FF;  /* Biru Muda */
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    
+menu {
+  --size: 2.5rem;
+  --radius: 6rem;
+  --padding: 1rem;
+  --bg-color: rgba(255, 255, 255, 0.9);
+  --fg-color: rgba(0, 0, 0, 0.7);
+  --hi-color: #c22eff;
+  
+  position: fixed;
+  bottom: var(--padding);
+  right: var(--padding);
+}
+
+menu > * {
+  position: absolute;
+  
+  display: grid;
+  place-content: center;
+  
+  border-radius: 50%;
+  
+  background: var(--bg-color);
+  color: var(--fg-color);
+  
+  text-decoration: none;
+  
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.6);
+}
+
+menu > .action {
+  --factor: 0;
+  
+  width: var(--size);
+  height: var(--size);
+  right: calc(0.35 * var(--size));
+  bottom: calc(0.35 * var(--size));
+  
+  opacity: 0;
+  
+  transform: rotate(calc(-1 * var(--angle))) translateY(calc(-1 * var(--radius) * var(--factor))) rotate(var(--angle));
+  
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out, box-shadow 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+menu > .action:hover, menu > .trigger:hover {
+  color: var(--hi-color);
+  box-shadow: 0px 0px 0px 0.35rem rgba(0, 0, 0, 0.2);
+}
+
+menu.open > .action {
+  --factor: 1;
+  
+  opacity: 1;
+}
+
+menu > .action:nth-child(1) {
+  --angle: 0deg;
+  transition-delay: 0ms
+  --factor: 1;
+  
+  opacity: 1;
+}
+
+menu > .action:nth-child(1) {
+  --angle: 0deg;
+  transition-delay: 0ms;
+}
+
+menu > .action:nth-child(2) {
+  --angle: 30deg;
+  transition-delay: 50ms;
+}
+
+menu > .action:nth-child(3) {
+  --angle: 60deg;
+  transition-delay: 100ms;
+}
+
+menu > .action:nth-child(4) {
+  --angle: 90deg;
+  transition-delay: 150ms;
+}
+
+menu > .trigger {
+  width: calc(1.6 * var(--size));
+  height: calc(1.6 * var(--size));
+  bottom: 0;
+  right: 0;
+  
+  font-size: 2rem;
+  transition: box-shadow 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+menu > .trigger > i {
+  transition: transform 250ms ease-in-out;
+}
+
+menu.open > .trigger > i {
+  transform: rotate(-135deg);
+}
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bajisan all trx</h1>
+    </div>
+
+    <!-- Produk Grid -->
+      <div class="card">
+         <video autoplay loop muted src="menu.mp4">
+         </video>
+        </div>
+        
+    <!-- Kontrol Musik -->
+  <div class="music-controls">
+    <audio id="audio" src="music.mp3"></audio>
+    <button id="tombol-mulai">ᴘʟᴀʏ ᴍᴜsɪᴄ</button>
+    <button id="tombol-stop">sᴛᴏᴘ ᴍᴜsɪᴄ</button>
+  </div>
+  
+    <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+    
+ <div class="menu">
+   <h3>MAU LIAT PAYMENT BAJISAN?</h3>
+   <p>PENCET TOMBOL DI BAWAH INI</p>
+   <button type="submit" class="payment">All Payment Bajisan</button>
+   <button onclick="location.href='https://whatsapp.com/channel/0029VaiLyT45EjxqIAcObu3n'">Saluran Bajisan</button>
+ </div>
+   
+    <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+              
+       <!-- AREA CARD SCRIPT -->
+    <div style="margin-bottom: 30px;">
+    <div class="menu">
+      <h3>LIST MC BAJISAN</h3>
+        <ul style="list-style: none; padding: 0; color: white;">
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">1-50k = 2k</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">50-250k = 3k</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">250-500k = 4k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">500-650k = 5k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">650-750k = 6k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">750-850k = 8k</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">850-1jt = 10k</a></li>
+        </ul>
+    </div>
+    <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+    
+        <div style="margin-bottom: 30px;">
+    <div class="menu">
+      <h3>MURID BUG</h3>
+      <p>PRICE = 7K</p>
+      <h3>ORDER BOT MD</h3>
+      <p>PRICE = 10K</p>
+      <h4>ALL PERMANEN</h4>
+      </div>
+      </div>
+    
+        <center><font color="yellow" size="6">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </font></center>
+        
+<menu>
+  <a href="https://wa.me/6285179944903" class="action"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://tiktok.com/@bajisankegelapan" class="action"><i class="fab fa-tiktok"></i></a>
+  <a href="https://t.me/bajisankegelapan" class="action"><i class="fab fa-telegram"></i></a>
+  <a href="https://www.youtube.com/@Bajisan_gaming_channel" class="action"><i class="fab fa-youtube"></i></a>
+    <a href="#" class="trigger"><i class="fas fa-plus"></i></a>
+</menu>
+
+    <footer style="background-color: #111827; color: #fff; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <!-- Nama dan Deskripsi -->
+    <div style="margin-bottom: 30px;">
+        <h2 style="color: #34D399; font-size: 24px; font-weight: bold;">Bajisan all trx</h2>
+        <ul style="list-style: none; padding: 0; color: white;">
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">Akun bisa diubah,</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">Stok bisa di cari,</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">tapi yang amanah,</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Tidak datang dua kali</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Menyala Wii🔥</a></li>
+        </ul>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Quick Links</h3>
+        <ul style="list-style: none; padding: 0; color: white;">
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">About Us</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">FAQs</a></li>
+            <li style="margin-bottom: 5px;"><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact Us -->
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Contact Us</h3>
+        <p style="color: white; margin: 5px 0;">Telegram: t.me/bajisankegelapan</p>
+        <p style="color: white; margin: 5px 0;">WhatsApp: +62 851-7994-4903</p>
+    </div>
+
+    <!-- Follow Us -->
+    <div>
+        <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Follow Us</h3>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <a href="https://www.youtube.com/@Bajisan_gaming_channel" style="color: white; font-size: 24px;">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://tiktok.com/@bajisankegelapan" style="color: white; font-size: 24px;">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://t.me/bajisankegelapan" style="color: white; font-size: 24px;">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://wa.me/6285179944903" style="color: white; font-size: 24px;">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+    <script>
+      const trigger = document.querySelector("menu > .trigger");
+trigger.addEventListener('click', (e) => {
+  e.currentTarget.parentElement.classList.toggle("open");
+});
+
+const audio = document.getElementById("audio");
+const tombolMulai = document.getElementById("tombol-mulai");
+const tombolStop = document.getElementById("tombol-stop");
+
+tombolMulai.addEventListener("click", function() {
+  audio.play();
+});
+tombolStop.addEventListener("click", function() {
+  audio.pause();
+});
+
+    document.querySelector('.payment').addEventListener('click', () => {
+      window.location.replace('payment.html');
+    })
+    </script>
+    </div>
+</body>
+</html>
